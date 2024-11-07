@@ -12,7 +12,7 @@ pub mod consensusalgorithm {
         wallet: &mut Wallet,
     ) {
         let network = &c_network;
-        loop {
+        'action:loop {
             // `get_units` çağrısını match ile kontrol et
             match CurrencyNetwork::get_units(&network) {
                 Ok(units) => {
@@ -23,11 +23,16 @@ pub mod consensusalgorithm {
                     let potential_increase = calc_potential(ai, network);
                     println!("Calculated potential increase: {:?}", potential_increase);
                     // Koşullar
-                    if m - exchange < potential_increase / 3.0 && m - exchange > 0.0 {
+                    if m - exchange < potential_increase / 3.0 {
                         let amount_to_buy = wallet.balance * 0.6; // %60'lık kısmı al
-                        ACTION::BUY.execute(amount_to_buy);
-                    } else if m - exchange > potential_increase / 2.0 && m - exchange > 0.0 {
+                        if wallet.balance > 2.0{
+                        ACTION::BUY.execute(amount_to_buy);}
+                        else {
+                            continue;
+                        }
+                    } else if m - exchange > potential_increase / 2.0 && m - exchange > 2.0 {
                         ACTION::SELL.execute(exchange);
+                        break 'action;
                     } else {
                         continue;
                     }

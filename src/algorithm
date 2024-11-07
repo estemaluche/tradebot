@@ -26,9 +26,9 @@
     let potancial_increase = sum_val * sum_val_percentage;
     println!("{:?}",potancial_increase);
     // Koşullar
-    if m - exchange < potancial_increase / 3.0 && m-exchange > 0.0 {
+    if m - exchange < potancial_increase / 3.0{
         println!("ACTION: BUY");
-    } else if m - exchange > potancial_increase / 2.0 && m - exchange > 0.0 {
+    } else if m - exchange > potancial_increase / 2.0 && m - exchange > 2.0 {
         println!("ACTION: SELL");
     } else {
         println!("ACTION: PASS");

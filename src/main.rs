@@ -1,11 +1,9 @@
 mod bot;
+mod consts;
 mod currency;
 mod log;
 mod wallet;
-mod consts;
 mod app {
-
-
     use crate::bot::consensus;
     use crate::bot::orders::ACTION;
     use crate::bot::raveai;
@@ -40,9 +38,8 @@ mod app {
             exchange_log,
             &mut raveai,
             network,
-            &mut wallet
+            &mut wallet,
         );
-        
     }
 }
 fn main() {
