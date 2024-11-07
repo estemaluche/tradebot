@@ -1,5 +1,5 @@
 pub mod CryptoUnit {
-    use crate::{log::log::Log, wallet::network::CurrencyNetwork};
+    use crate::log::log::Log;
     #[derive(Clone)]
     pub struct CurrencyUnit {
         pub name: String,

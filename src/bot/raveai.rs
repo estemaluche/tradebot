@@ -1,4 +1,6 @@
 pub mod rave {
+    use crate::currency::currencies::CryptoUnit::CurrencyUnit;
+
     pub struct RAVEAI {
         pub potential:f64
     }   
@@ -9,5 +11,9 @@ pub mod rave {
             };
             _bot
         }
+        pub fn calc_best_unit(units:&Vec<CurrencyUnit>) -> CurrencyUnit{
+            CurrencyUnit::new()//TEST
+        }
     }
+    
 }

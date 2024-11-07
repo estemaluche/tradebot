@@ -17,14 +17,8 @@ pub mod consensusalgorithm {
             match CurrencyNetwork::get_units(&network) {
                 Ok(units) => {
                     // En iyi potansiyeli olan birimi bul
-                    let mut best_unit = &units[0];
-                    for unit in &units {
-                        if unit.instant_value > best_unit.instant_value {
-                            best_unit = unit;
-                        }
-                    }
-                    
-                    let m: f64 = best_unit.instant_value; // Mevcut fiyat
+                    let best_unit = RAVEAI::calc_best_unit(&units);
+                    let m = &best_unit.instant_value;
                     let exchange: f64 = log.exchange_log; // Alınan fiyat
                     let potential_increase = calc_potential(ai, network);
                     println!("Calculated potential increase: {:?}", potential_increase);
