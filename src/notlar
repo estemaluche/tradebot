@@ -1,0 +1,6 @@
+//w_j = @(x/xwj) J->(w,b)
+
+//Optimization Solve
+//ADAM Algorithm Intution
+wj keeps moving same direction increase @.
+wj keep oscillating reduce @

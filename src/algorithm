@@ -1,0 +1,37 @@
+    // 20 DAKIKA ARALIKLA GUNCELLE
+    // CurrencyUnit içerisindeki tüm Unitleri gez ve en iyi potansiyeli sahip olandan %60 balance oranında satın al
+    // Geri kalan %40 bakiyeyi 5 unit için %8 er oranda paylaştır
+    ctrl+d = çoklu seçim
+    //Algoritmayı potansiyel hesabını ai yapıcak şekilde oluştur , geri dönüş değeri için log kayıtlarını işle ve yapay zekayı eğit
+    //Yapay zeka güncelleme süresi log kayıt oluşumuyla aynı olucak -- 20 dakika
+    //w_j = @(x/xwj) J->(w,b)
+    //Wallet içindeki harcamalar için log yaz
+    
+    // Veriler
+     m: f64 = 18.00; // Mevcut fiyat
+     exchange: f64 = 17.00; // Alınan fiyat
+     e_i: f64 = 17.73; // 1 yıl önceki fiyat
+     e_o: f64 = 44.22; // 6 ay önceki fiyat
+     e_m: f64 = 18.34; // 1 ay önceki fiyat
+     e_w: f64 = 19.52; // Haftalık fiyat
+     b_i: f64 = 0.90; // 1 yıl önceki artış
+     b_o: f64 = 120.0; // 6 ay önceki artış
+     b_m: f64 = -1.87; // 1 ay önceki artış
+     b_w: f64 = -10.0; // Haftalık artış
+
+    // Hesaplamalar
+     sum_val = (e_i + e_o + e_m + e_w) / 4.0;
+    sum_val_percentage = (b_i / 100.0 + b_o / 100.0 + b_m / 100.0 + b_w / 100.0) / 4.0;
+
+    let potancial_increase = sum_val * sum_val_percentage;
+    println!("{:?}",potancial_increase);
+    // Koşullar
+    if m - exchange < potancial_increase / 3.0 && m-exchange > 0.0 {
+        println!("ACTION: BUY");
+    } else if m - exchange > potancial_increase / 2.0 && m - exchange > 0.0 {
+        println!("ACTION: SELL");
+    } else {
+        println!("ACTION: PASS");
+    }
+
+
